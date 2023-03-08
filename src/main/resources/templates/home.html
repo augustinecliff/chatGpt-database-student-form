@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration System</title>
+    <style>
+        /* Styling for the navigation bar */
+        nav {
+            display: flex;
+            background-color: #243c5a;
+            padding: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        li {
+            margin-right: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        /* Styling for the dashboard */
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+            margin: 20px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .card h2 {
+            font-size: 24px;
+            margin-top: 0;
+        }
+
+        .card p {
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav>
+    <ul>
+        <li><a href="/students">View Students</a></li>
+        <li><a href="/students/add">Add Student</a></li>
+        <li><a href="/units">View Units</a></li>
+        <li><a href="/units/add">Add Unit</a></li>
+    </ul>
+</nav>
+
+<!-- Dashboard -->
+<div class="dashboard">
+    <div class="card">
+        <h2>Total Students</h2>
+        <p>10</p>
+    </div>
+    <div class="card">
+        <h2>Total Units</h2>
+        <p>5</p>
+    </div>
+    <div class="card">
+        <h2>Total Enrollments</h2>
+        <p>20</p>
+    </div>
+</div>
+</body>
+</html>
+

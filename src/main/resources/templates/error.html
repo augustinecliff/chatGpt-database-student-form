@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body>
+<h1>Error</h1>
+<p>An error has occurred:</p>
+<ul>
+    <li>Type: <span th:text="${exception.class}"></span></li>
+    <li>Message: <span th:text="${exception.message}"></span></li>
+    <li>URL: <span th:text="${url}"></span></li>
+</ul>
+</body>
+</html>
+
+
+

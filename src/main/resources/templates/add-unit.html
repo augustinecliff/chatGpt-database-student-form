@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Unit</title>
+</head>
+<body>
+<h1>Add Unit</h1>
+<form method="post" th:action="@{/units/add}" th:object="${unit}">
+    <div>
+        <label for="name">Name:</label>
+        <input id="name" required th:field="*{name}" type="text">
+    </div>
+    <div>
+        <label for="code">Code:</label>
+        <input id="code" required th:field="*{code}" type="text">
+    </div>
+    <div>
+        <button type="submit">Save</button>
+    </div>
+</form>
+</body>
+</html>

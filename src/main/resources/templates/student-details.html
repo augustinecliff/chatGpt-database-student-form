@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Details</title>
+</head>
+<body>
+<h1>Student Details</h1>
+<table>
+    <tr>
+        <th>First Name</th>
+        <td th:text="${student.firstName}"></td>
+    </tr>
+    <tr>
+        <th>Last Name</th>
+        <td th:text="${student.lastName}"></td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td th:text="${student.email}"></td>
+    </tr>
+    <tr>
+        <th>Phone Number</th>
+        <td th:text="${student.phoneNumber}"></td>
+    </tr>
+    <tr>
+        <th>Date of Birth</th>
+        <td th:text="${student.dateOfBirth}"></td>
+    </tr>
+    <tr>
+        <th>Gender</th>
+        <td th:text="${student.gender}"></td>
+    </tr>
+    <tr>
+        <th>Unit</th>
+        <td th:text="${student.unit.name}"></td>
+    </tr>
+</table>
+<br>
+<a th:href="@{/students/edit/{id}(id=${student.id})}">Edit</a>
+<a onclick="return confirm('Are you sure you want to delete this student?')" th:href="@{/students/delete/{id}(id=${student.id})}">Delete</a>
+<br>
+<a th:href="@{/students}">Back to Student List</a>
+</body>
+</html>

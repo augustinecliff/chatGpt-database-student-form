@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Unit</title>
+</head>
+<body>
+<h2>Edit Unit</h2>
+<form action="#" method="post" th:action="@{/units/edit}" th:object="${unit}">
+    <input th:field="*{id}" type="hidden"/>
+    <div>
+        <label for="code">Code</label>
+        <input required th:field="*{code}" type="text"/>
+    </div>
+    <div>
+        <label for="name">Name</label>
+        <input required th:field="*{name}" type="text"/>
+    </div>
+    <button type="submit">Save Unit</button>
+</form>
+</body>
+</html>

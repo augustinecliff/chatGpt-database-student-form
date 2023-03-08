@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Student Form</title>
+</head>
+<body>
+<h1>New Student Form</h1>
+<form method="post" th:object="${student}">
+    <div>
+        <label for="firstName">First Name:</label>
+        <input id="firstName" name="firstName" required th:field="*{firstName}" type="text">
+        <span th:errors="*{firstName}" th:if="${#fields.hasErrors('firstName')}"></span>
+    </div>
+    <div>
+        <label for="lastName">Last Name:</label>
+        <input id="lastName" name="lastName" required th:field="*{lastName}" type="text">
+        <span th:errors="*{lastName}" th:if="${#fields.hasErrors('lastName')}"></span>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input id="email" name="email" required th:field="*{email}" type="email">
+        <span th:errors="*{email}" th:if="${#fields.hasErrors('email')}"></span>
+    </div>
+    <div>
+        <label for="phoneNumber">Phone Number:</label>
+        <input id="phoneNumber" name="phoneNumber" required th:field="*{phoneNumber}" type="text">
+        <span th:errors="*{phoneNumber}" th:if="${#fields.hasErrors('phoneNumber')}"></span>
+    </div>
+    <div>
+        <label for="dateOfBirth">Date of Birth:</label>
+        <input id="dateOfBirth" name="dateOfBirth" required th:field="*{dateOfBirth}" type="date">
+        <span th:errors="*{dateOfBirth}" th:if="${#fields.hasErrors('dateOfBirth')}"></span>
+    </div>
+    <div>
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required th:field="*{gender}">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <span th:errors="*{gender}" th:if="${#fields.hasErrors('gender')}"></span>
+    </div>
+    <div>
+        <label for="units">Units:</label>
+        <select id="units" multiple name="units" required th:field="*{units}">
+            <option th:each="unit : ${units}" th:text="${unit.name}" th:value="${unit}"></option>
+        </select>
+        <span th:errors="*{units}" th:if="${#fields.hasErrors('units')}"></span>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
+
