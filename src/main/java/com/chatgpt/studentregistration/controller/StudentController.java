@@ -34,10 +34,12 @@ public class StudentController {
     }
 
     @PostMapping("/form")
-    public String submitStudentForm(@ModelAttribute("student") Student student) {
+    public String submitStudentForm(@ModelAttribute("student") Student student, @RequestParam(value = "id", required = false) int id) {
+        student.setId(id);
         studentService.saveStudent(student);
         return "redirect:/students/list";
     }
+
 
     @GetMapping("/list")
     public String showStudentList(Model model) {
