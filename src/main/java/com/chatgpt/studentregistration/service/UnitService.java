@@ -11,8 +11,11 @@ import java.util.List;
 @Service
 public class UnitService {
 
-    @Autowired
-    private UnitRepository unitRepository;
+    private final UnitRepository unitRepository;
+
+    public UnitService(UnitRepository unitRepository) {
+        this.unitRepository = unitRepository;
+    }
 
     public List<Unit> getAllUnits() {
         return unitRepository.findAll();
