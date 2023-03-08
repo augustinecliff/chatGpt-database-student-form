@@ -21,9 +21,8 @@
     <tbody>
     <th:block th:each="unit : ${units}">
         <tr>
-            <td th:text="${unit.unitCode}"></td>
-            <td th:text="${unit.unitName}"></td>
-            <td th:text="${unit.lecturer}"></td>
+            <td th:text="${unit.id}"></td>
+            <td th:text="${unit.name}"></td>
             <td>
                 <a th:href="@{/units/edit/{id}(id=${unit.id})}">Edit</a>
                 <a th:href="@{/units/delete/{id}(id=${unit.id})}">Delete</a>

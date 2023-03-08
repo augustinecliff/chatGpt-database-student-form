@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1>New Student Form</h1>
-<form method="post" th:object="${student}">
+<form method="post" th:action="@{/students/student-form}" th:object="${student}">
+    <input th:field="*{id}" type="hidden" />
     <div>
         <label for="firstName">First Name:</label>
         <input id="firstName" name="firstName" required th:field="*{firstName}" type="text">
@@ -43,12 +44,17 @@
         <span th:errors="*{gender}" th:if="${#fields.hasErrors('gender')}"></span>
     </div>
     <div>
-        <label for="units">Units:</label>
-        <select id="units" name="units" required th:field="*{units}" th:multiple="true">
-            <option th:each="unit : ${units}" th:text="${unit.name}" th:value="${unit}"></option>
-        </select>
+        <label>Units:</label>
+        <div th:each="unit : ${units}">
+            <label>
+                <input th:field="*{units}" th:value="${unit.id}" type="checkbox"/>
+                <span th:text="${unit.name}"></span>
+            </label>
+        </div>
         <span th:errors="*{units}" th:if="${#fields.hasErrors('units')}"></span>
     </div>
+
+
     <button type="submit">Submit</button>
 </form>
 </body>

@@ -21,7 +21,7 @@ public class UnitService {
         return unitRepository.findAll();
     }
 
-    public Unit getUnitById(Long id) {
+    public Unit getUnitById(int id) {
         return unitRepository.findById(id).orElse(null);
     }
 
@@ -33,7 +33,7 @@ public class UnitService {
         unitRepository.save(unit);
     }
 
-    public void deleteUnitById(Long id) {
+    public void deleteUnitById(int id) {
         unitRepository.deleteById(id);
     }
 

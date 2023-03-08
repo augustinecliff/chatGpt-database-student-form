@@ -37,7 +37,7 @@ public class UnitController {
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditUnitForm(@PathVariable("id") Long id,Model model) {
+    public String showEditUnitForm(@PathVariable("id") int id,Model model) {
         Optional<Unit> unit = unitRepository.findById(id);
         if(unit.isPresent()) {
             model.addAttribute("unit", unit.get());
@@ -53,7 +53,7 @@ public class UnitController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteUnit(@PathVariable("id") Long id) {
+    public String deleteUnit(@PathVariable("id") int id) {
         unitRepository.deleteById(id);
         return "redirect:/units";
     }

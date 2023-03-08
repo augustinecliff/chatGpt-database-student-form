@@ -34,7 +34,7 @@ public class StudentController {
         return "student-form";
     }
 
-    @PostMapping("/form")
+    @PostMapping("/student-form")
     public String submitStudentForm(@ModelAttribute("student") Student student, @RequestParam(value = "id", required = false) int id) {
         student.setId(id);
         studentService.saveStudent(student);
@@ -50,7 +50,7 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public String showStudentDetails(@PathVariable("id") Long id, Model model) {
+    public String showStudentDetails(@PathVariable("id") int id, Model model) {
         Optional<Student> student = studentService.getStudentById(id);
         if (student.isPresent()) {
             model.addAttribute("student", student.get());
