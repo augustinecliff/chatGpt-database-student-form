@@ -44,7 +44,7 @@
     </div>
     <div>
         <label for="units">Units:</label>
-        <select id="units" multiple name="units" required th:field="*{units}">
+        <select id="units" name="units" required th:field="*{units}" th:multiple="true">
             <option th:each="unit : ${units}" th:text="${unit.name}" th:value="${unit}"></option>
         </select>
         <span th:errors="*{units}" th:if="${#fields.hasErrors('units')}"></span>

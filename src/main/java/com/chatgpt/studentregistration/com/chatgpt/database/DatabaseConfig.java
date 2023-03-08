@@ -12,7 +12,7 @@ public class DatabaseConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.h2.Driver");
-        dataSource.setUrl("jdbc:h2:mem:testdb");
+        dataSource.setUrl("jdbc:h2:~/testdb");
         dataSource.setUsername("sa");
         dataSource.setPassword("");
 

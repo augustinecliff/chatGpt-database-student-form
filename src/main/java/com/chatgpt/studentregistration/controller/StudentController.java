@@ -4,14 +4,12 @@ package com.chatgpt.studentregistration.controller;
 
 import com.chatgpt.studentregistration.errors.StudentNotFoundException;
 import com.chatgpt.studentregistration.model.Student;
+import com.chatgpt.studentregistration.model.Unit;
 import com.chatgpt.studentregistration.service.StudentService;
 import com.chatgpt.studentregistration.service.UnitService;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,15 +19,18 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/students")
 public class StudentController {
-
+    private final UnitService unitService;
     private final StudentService studentService;
-    public StudentController(StudentService studentService) {
+    public StudentController(UnitService unitService, StudentService studentService) {
+        this.unitService = unitService;
         this.studentService = studentService;
     }
 
-    @GetMapping("/form")
+    @GetMapping("/student-form")
     public String showStudentForm(Model model) {
+        List<Unit> units = unitService.getAllUnits();
         model.addAttribute("student", new Student());
+        model.addAttribute("units", units);
         return "student-form";
     }
 
