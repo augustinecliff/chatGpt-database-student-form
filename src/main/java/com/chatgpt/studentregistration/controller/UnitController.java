@@ -17,7 +17,7 @@ public class UnitController {
     @Autowired
     private UnitRepository unitRepository;
 
-    @GetMapping("/")
+    @GetMapping("/myUnits")
     public String showUnits(Model model) {
         List<Unit> units = unitRepository.findAll();
         model.addAttribute("units",units);
@@ -33,7 +33,7 @@ public class UnitController {
     @PostMapping("/add")
     public String addUnit(@ModelAttribute("unit") Unit unit) {
         unitRepository.save(unit);
-        return "redirect:/units/";
+        return "redirect:/units/myUnits";
     }
 
     @GetMapping("/edit/{id}")

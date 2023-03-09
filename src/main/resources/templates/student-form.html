@@ -1,62 +1,106 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>New Student Form</title>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23444444' d='M5 6L0 1h10z'/%3E%3C/svg%3E");
+            background-size: 10px 6px;
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            padding-right: 25px;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button[type="submit"]:hover {
+            background-color: #0069d9;
+        }
+        .form-group {
+            margin-bottom: 30px;
+        }
+        .form-error {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
 </head>
-<body>
-<h1>New Student Form</h1>
-<form method="post" th:action="@{/students/student-form}" th:object="${student}">
-    <input th:field="*{id}" type="hidden" />
-    <div>
-        <label for="firstName">First Name:</label>
-        <input id="firstName" name="firstName" required th:field="*{firstName}" type="text">
-        <span th:errors="*{firstName}" th:if="${#fields.hasErrors('firstName')}"></span>
-    </div>
-    <div>
-        <label for="lastName">Last Name:</label>
-        <input id="lastName" name="lastName" required th:field="*{lastName}" type="text">
-        <span th:errors="*{lastName}" th:if="${#fields.hasErrors('lastName')}"></span>
-    </div>
-    <div>
-        <label for="email">Email:</label>
-        <input id="email" name="email" required th:field="*{email}" type="email">
-        <span th:errors="*{email}" th:if="${#fields.hasErrors('email')}"></span>
-    </div>
-    <div>
-        <label for="phoneNumber">Phone Number:</label>
-        <input id="phoneNumber" name="phoneNumber" required th:field="*{phoneNumber}" type="text">
-        <span th:errors="*{phoneNumber}" th:if="${#fields.hasErrors('phoneNumber')}"></span>
-    </div>
-    <div>
-        <label for="dateOfBirth">Date of Birth:</label>
-        <input id="dateOfBirth" name="dateOfBirth" required th:field="*{dateOfBirth}" type="date">
-        <span th:errors="*{dateOfBirth}" th:if="${#fields.hasErrors('dateOfBirth')}"></span>
-    </div>
-    <div>
-        <label for="gender">Gender:</label>
-        <select id="gender" name="gender" required th:field="*{gender}">
-            <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-        </select>
-        <span th:errors="*{gender}" th:if="${#fields.hasErrors('gender')}"></span>
-    </div>
-    <div>
-        <label>Units:</label>
-        <div th:each="unit : ${units}">
-            <label>
-                <input th:field="*{units}" th:value="${unit.id}" type="checkbox"/>
-                <span th:text="${unit.name}"></span>
-            </label>
+    <body>
+        <div class="container">
+            <h1>New Student Form</h1>
+            <form method="post" th:action="@{/students/student-form}" th:object="${student}">
+                <input th:field="*{id}" type="hidden" />
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input id="firstName" name="firstName" required th:field="*{firstName}" type="text">
+                    <span class="form-error" th:errors="*{firstName}" th:if="${#fields.hasErrors('firstName')}"></span>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input id="lastName" name="lastName" required th:field="*{lastName}" type="text">
+                    <span class="form-error" th:errors="*{lastName}" th:if="${#fields.hasErrors('lastName')}"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input class="form-control" id="email" name="email" required th:field="*{email}" type="email">
+                    <span class="text-danger" th:errors="*{email}" th:if="${#fields.hasErrors('email')}"></span>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">phoneNumber:</label>
+                    <input class="form-control" id="phoneNumber" maxlength="10" name="phoneNumber" required th:field="*{phoneNumber}" type="tel">
+                    <span class="text-danger" th:errors="*{phoneNumber}" th:if="${#fields.hasErrors('phoneNumber')}"></span>
+                </div>
+                <div class="form-group">
+                    <label for="dateOfBirth">dateOfBirth:</label>
+                    <input class="form-control" id="dateOfBirth" name="dateOfBirth" required th:field="*{dateOfBirth}" type="date">
+                    <span class="text-danger" th:errors="*{dateOfBirth}" th:if="${#fields.hasErrors('dateOfBirth')}"></span>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select class="form-control" id="gender" name="gender" required th:field="*{gender}">
+                        <option value="">-- Select Gender --</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <span class="text-danger" th:errors="*{gender}" th:if="${#fields.hasErrors('gender')}"></span>
+                </div>
+
+                <button type="submit">Submit Form</button>
+            </form>
         </div>
-        <span th:errors="*{units}" th:if="${#fields.hasErrors('units')}"></span>
-    </div>
-
-
-    <button type="submit">Submit</button>
-</form>
-</body>
+    </body>
 </html>
-

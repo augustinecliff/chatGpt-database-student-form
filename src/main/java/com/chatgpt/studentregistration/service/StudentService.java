@@ -3,7 +3,6 @@ package com.chatgpt.studentregistration.service;
 
 import com.chatgpt.studentregistration.model.Student;
 import com.chatgpt.studentregistration.repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,7 +32,7 @@ public class StudentService {
     public void deleteStudentById(int id) {
         studentRepository.deleteById(id);
     }
-    public Student saveStudent(Student student) {
-        return studentRepository.save(student);
+    public void saveStudent(Student student) {
+        studentRepository.save(student);
     }
 }

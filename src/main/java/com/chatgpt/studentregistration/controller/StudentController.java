@@ -4,9 +4,7 @@ package com.chatgpt.studentregistration.controller;
 
 import com.chatgpt.studentregistration.errors.StudentNotFoundException;
 import com.chatgpt.studentregistration.model.Student;
-import com.chatgpt.studentregistration.model.Unit;
 import com.chatgpt.studentregistration.service.StudentService;
-import com.chatgpt.studentregistration.service.UnitService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,18 +17,22 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/students")
 public class StudentController {
-    private final UnitService unitService;
     private final StudentService studentService;
-    public StudentController(UnitService unitService, StudentService studentService) {
-        this.unitService = unitService;
+    public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
 
     @GetMapping("/student-form")
     public String showStudentForm(Model model) {
-        List<Unit> units = unitService.getAllUnits();
         model.addAttribute("student", new Student());
-        model.addAttribute("units", units);
+
+        return "student-form";
+    }
+
+    @GetMapping("/new")
+    public String showNewStudentForm(Model model) {
+        model.addAttribute("student", new Student());
+
         return "student-form";
     }
 
@@ -59,8 +61,27 @@ public class StudentController {
             throw new StudentNotFoundException("Student with ID " + id + " not found");
         }
     }
-
-    @ExceptionHandler(StudentNotFoundException.class)
+    @GetMapping("/edit/{id}")
+    public String showEditStudentForm(@PathVariable("id") int id, Model model) {
+        Optional<Student> student = studentService.getStudentById(id);
+        if (student.isPresent()) {
+            model.addAttribute("student", student.get());
+            return "edit-student";
+        } else {
+            throw new StudentNotFoundException("Student with ID " + id + " not found");
+        }
+    }
+    @PostMapping("/edit")
+    public String updateStudent(@ModelAttribute("student") Student student) {
+        studentService.saveStudent(student);
+        return "redirect:/students/list";
+    }
+    @GetMapping("/delete/{id}")
+    public String deleteStudent(@PathVariable("id") int id) {
+        studentService.deleteStudentById(id);
+        return "redirect:/students/list";
+    }
+     @ExceptionHandler(StudentNotFoundException.class)
     @RequestMapping("/error")
     public ModelAndView handleStudentNotFoundException(HttpServletRequest request, Exception ex) {
         ModelAndView modelAndView = new ModelAndView();

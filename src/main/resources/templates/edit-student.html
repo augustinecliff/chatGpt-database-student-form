@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Student</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+    }
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+    }
+    label {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    select {
+      height: 40px;
+    }
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+    .error-message {
+      color: red;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+<h1>Edit Student</h1>
+<form action="#" method="post" th:action="@{/students/edit}" th:object="${student}">
+  <input th:field="*{id}" type="hidden"/>
+  <p>
+    <label for="firstName">First Name:</label>
+    <input id="firstName" th:field="*{firstName}" type="text"/>
+  </p>
+  <p>
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" th:field="*{lastName}" type="text"/>
+  </p>
+  <p>
+    <label for="email">Email:</label>
+    <input id="email" th:field="*{email}" type="email"/>
+  </p>
+  <p>
+    <label for="phoneNumber">Phone Number:</label>
+    <input id="phoneNumber" th:field="*{phoneNumber}" type="tel"/>
+  </p>
+  <p>
+    <label for="dateOfBirth">Date of Birth:</label>
+    <input id="dateOfBirth" th:field="*{dateOfBirth}" type="date"/>
+  </p>
+  <p>
+    <label for="gender">Gender:</label>
+    <select id="gender" th:field="*{gender}">
+      <option value="">Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+  </p>
+  <p>
+    <button type="submit">Save</button>
+  </p>
+</form>
+</body>
+</html>

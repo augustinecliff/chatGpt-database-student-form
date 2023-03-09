@@ -1,15 +1,14 @@
 package com.chatgpt.studentregistration.model;
 
-import com.chatgpt.studentregistration.model.Unit;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "students")
@@ -33,16 +32,13 @@ public class Student {
 
     @NotBlank(message = "PhoneNumber is required")
     private String phoneNumber;
-    @NotBlank(message = "DateOfBirth is required")
+
+    @DateTimeFormat(pattern = "MM-dd-yyyy")
+    @Temporal(TemporalType.DATE)
     private LocalDate dateOfBirth;
     @NotBlank(message = "gender is required")
     private String gender;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "student_unit",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "unit_id"))
-    private List<Unit> units;
 }
 
 

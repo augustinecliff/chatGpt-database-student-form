@@ -4,32 +4,69 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Units</title>
+    <style>
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+        color: #444444;
+        text-align: center;
+        }
+
+        a {
+        color: #0077cc;
+        text-decoration: none;
+        font-weight: bold;
+        }
+
+        table {
+        margin: 20px auto;
+        border-collapse: collapse;
+        width: 80%;
+        }
+
+        th, td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #dddddd;
+        }
+
+        th {
+        background-color: #f2f2f2;
+        color: #555555;
+        }
+
+        tr:nth-child(even) {
+        background-color: #f9f9f9;
+        }
+    </style>
+
+
 </head>
 <body>
 <h1>Units</h1>
 <a href="/units/add">Add Unit</a>
 <br><br>
-<table>
+<table cellspacing="2px">
     <thead>
     <tr>
         <th>Unit Code</th>
         <th>Unit Name</th>
-        <th>Unit Lecturer</th>
         <th>Action</th>
     </tr>
     </thead>
     <tbody>
-    <th:block th:each="unit : ${units}">
-        <tr>
-            <td th:text="${unit.id}"></td>
-            <td th:text="${unit.name}"></td>
-            <td>
-                <a th:href="@{/units/edit/{id}(id=${unit.id})}">Edit</a>
-                <a th:href="@{/units/delete/{id}(id=${unit.id})}">Delete</a>
-            </td>
-        </tr>
-    </th:block>
+    <tr th:each="unit : ${units}">
+        <td th:text="${unit.id}"></td>
+        <td th:text="${unit.name}"></td>
+        <td>
+            <a th:href="@{/units/edit/{id}(id=${unit.id})}">Edit</a>
+            <a th:href="@{/units/delete/{id}(id=${unit.id})}">Delete</a>
+        </td>
+    </tr>
     </tbody>
+
 </table>
 </body>
 </html>
