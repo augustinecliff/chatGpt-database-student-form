@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Edit Student</title>
@@ -18,7 +18,7 @@
       padding: 20px;
       background-color: #fff;
       border-radius: 5px;
-      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
     }
     label {
       display: inline-block;
@@ -49,10 +49,6 @@
     }
     button[type="submit"]:hover {
       background-color: #3e8e41;
-    }
-    .error-message {
-      color: red;
-      font-style: italic;
     }
   </style>
 </head>
@@ -89,9 +85,19 @@
       <option value="other">Other</option>
     </select>
   </p>
+  <div>
+    <label for="units">Units:</label>
+    <div id="units" th:each="unit : ${units}">
+      <label>
+        <input name="unitIds" th:checked="${student.units.contains(unit)}" th:value="${unit}" type="checkbox">
+        <span th:text="${unit.name}"></span>
+      </label>
+    </div>
+  </div>
   <p>
     <button type="submit">Save</button>
   </p>
 </form>
+<button type="submit"><a href="/">Home Page</a></button>
 </body>
 </html>

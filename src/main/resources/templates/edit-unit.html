@@ -25,7 +25,7 @@
             width: 100%;
         }
         input[type="submit"] {
-            background-color: #4CAF50;
+            background-color: #FFFFFF;
             border: none;
             color: white;
             padding: 10px 20px;
@@ -47,15 +47,17 @@
 <form action="#" method="post" th:action="@{/units/edit}" th:object="${unit}">
     <input th:field="*{id}" type="hidden"/>
     <div>
+        <label for="name">Name:</label>
+        <input id="name" required th:field="*{name}" type="text"/>
+
+    </div>
+    <div>
         <label for="code">Code:</label>
         <input id="code" required th:field="*{code}" type="text"/>
     </div>
-    <div>
-        <label for="name">Name:</label>
-        <input id="name" required th:field="*{name}" type="text"/>
-    </div>
     <input type="submit" value="Save Unit"/>
 </form>
+<button type="submit"><a href="/">Home Page</a></button>
 </body>
 </html>
 

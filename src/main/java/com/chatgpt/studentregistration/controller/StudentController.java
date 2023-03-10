@@ -4,13 +4,16 @@ package com.chatgpt.studentregistration.controller;
 
 import com.chatgpt.studentregistration.errors.StudentNotFoundException;
 import com.chatgpt.studentregistration.model.Student;
+import com.chatgpt.studentregistration.model.Unit;
 import com.chatgpt.studentregistration.service.StudentService;
+import com.chatgpt.studentregistration.service.UnitService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,13 +21,16 @@ import java.util.Optional;
 @RequestMapping("/students")
 public class StudentController {
     private final StudentService studentService;
-    public StudentController(StudentService studentService) {
+    private final UnitService unitService;
+    public StudentController(StudentService studentService, UnitService unitService) {
         this.studentService = studentService;
+        this.unitService = unitService;
     }
 
     @GetMapping("/student-form")
     public String showStudentForm(Model model) {
         model.addAttribute("student", new Student());
+        model.addAttribute("units",unitService.getAllUnits());
 
         return "student-form";
     }
@@ -32,14 +38,25 @@ public class StudentController {
     @GetMapping("/new")
     public String showNewStudentForm(Model model) {
         model.addAttribute("student", new Student());
+        model.addAttribute("units",unitService.getAllUnits());
 
         return "student-form";
     }
 
     @PostMapping("/student-form")
-    public String submitStudentForm(@ModelAttribute("student") Student student, @RequestParam(value = "id", required = false) int id) {
-        student.setId(id);
+    public String submitStudentForm(@ModelAttribute("student") Student student,
+                                    @RequestParam(value = "unitIds", required = false) List<Integer> unitIds) {
+        if(unitIds != null) {
+
+            List<Unit> units = new ArrayList<>();
+            for(Integer unitId : unitIds) {
+                units.add(unitService.getUnitById(unitId));
+            }
+
+            student.setUnits(units);
+        }
         studentService.saveStudent(student);
+
         return "redirect:/students/list";
     }
 
@@ -56,6 +73,9 @@ public class StudentController {
         Optional<Student> student = studentService.getStudentById(id);
         if (student.isPresent()) {
             model.addAttribute("student", student.get());
+            model.addAttribute("Student-units",student.get().getUnits());
+            System.out.println(student.get().getUnits()); //make sure to remove ..
+
             return "student-details";
         } else {
             throw new StudentNotFoundException("Student with ID " + id + " not found");
@@ -66,6 +86,7 @@ public class StudentController {
         Optional<Student> student = studentService.getStudentById(id);
         if (student.isPresent()) {
             model.addAttribute("student", student.get());
+
             return "edit-student";
         } else {
             throw new StudentNotFoundException("Student with ID " + id + " not found");

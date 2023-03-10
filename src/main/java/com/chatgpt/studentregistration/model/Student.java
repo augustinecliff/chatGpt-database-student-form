@@ -9,6 +9,8 @@ import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "students")
@@ -38,7 +40,13 @@ public class Student {
     private LocalDate dateOfBirth;
     @NotBlank(message = "gender is required")
     private String gender;
-
+    @ManyToMany
+    @JoinTable(
+            name = "student_unit",
+            joinColumns = { @JoinColumn(name = "student_id") },
+            inverseJoinColumns = { @JoinColumn(name = "unit_id") }
+    )
+    List<Unit> units = new ArrayList<>();
 }
 
 

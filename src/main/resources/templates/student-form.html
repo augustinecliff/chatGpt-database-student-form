@@ -98,6 +98,25 @@
                     </select>
                     <span class="text-danger" th:errors="*{gender}" th:if="${#fields.hasErrors('gender')}"></span>
                 </div>
+               <div class="form-group">
+                    <label for="units">Units:</label>
+                    <div id="units" th:each="unit : ${units}">
+                        <label>
+                            <input name="unitIds" th:checked="${student.units.contains(unit)}" th:value="${unit.id}" type="checkbox">
+                            <span th:text="${unit.name}"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!--<div>
+                    <label>Units</label>
+                    <div th:each="unit : ${units}">
+                        <label th:text="${unit.name} + ' (' + ${unit.code} + ')'">
+                        <input type="checkbox" th:field="*{units}" th:value="${unit}" th:checked="${student.units.contains(unit)}"/>
+                        </label>
+                        <br/>
+                    </div>
+                </div>-->
 
                 <button type="submit">Submit Form</button>
             </form>

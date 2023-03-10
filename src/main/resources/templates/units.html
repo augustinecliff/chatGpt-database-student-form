@@ -13,11 +13,21 @@
         color: #444444;
         text-align: center;
         }
-
         a {
-        color: #0077cc;
+        color: #0837ec;
         text-decoration: none;
         font-weight: bold;
+        }
+        .add-btn {
+            display: flex;
+            justify-content: center;
+            border-radius: 5px;
+            color: wheat;
+        }
+
+        .add-btn a {
+            margin-right: 90px;
+
         }
 
         table {
@@ -46,11 +56,12 @@
 </head>
 <body>
 <h1>Units</h1>
-<a href="/units/add">Add Unit</a>
+
 <br><br>
 <table cellspacing="2px">
     <thead>
     <tr>
+        <th>Unit Id</th>
         <th>Unit Code</th>
         <th>Unit Name</th>
         <th>Action</th>
@@ -59,14 +70,18 @@
     <tbody>
     <tr th:each="unit : ${units}">
         <td th:text="${unit.id}"></td>
+        <td th:text="${unit.code}"></td>
         <td th:text="${unit.name}"></td>
         <td>
-            <a th:href="@{/units/edit/{id}(id=${unit.id})}">Edit</a>
+            <a th:href="@{/units/edit/{id}(id=${unit.id})}">Edit </a>
             <a th:href="@{/units/delete/{id}(id=${unit.id})}">Delete</a>
         </td>
     </tr>
     </tbody>
-
 </table>
+<div class="add-btn">
+    <a href="/">Home Page</a>
+    <a href="/units/add">Add Unit</a>
+</div>
 </body>
 </html>

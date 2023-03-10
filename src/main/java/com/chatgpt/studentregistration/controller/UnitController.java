@@ -43,18 +43,18 @@ public class UnitController {
             model.addAttribute("unit", unit.get());
             return "edit-unit";
         }
-        else return "redirect:/units/";
+        else return "redirect:/units/myUnits";
     }
 
     @PostMapping("/edit")
     public String editUnit(@ModelAttribute("unit") Unit unit) {
         unitRepository.save(unit);
-        return "redirect:/units";
+        return "redirect:/units/myUnits";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteUnit(@PathVariable("id") int id) {
         unitRepository.deleteById(id);
-        return "redirect:/units";
+        return "redirect:/units/myUnits";
     }
 }
