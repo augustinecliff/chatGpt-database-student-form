@@ -1,4 +1,4 @@
-package com.chatgpt.studentregistration.errors;
+package com.studentregistration.errors;
 
 public class StudentNotFoundException extends RuntimeException {
     public StudentNotFoundException(String message) {

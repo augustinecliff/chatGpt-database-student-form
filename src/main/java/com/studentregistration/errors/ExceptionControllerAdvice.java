@@ -1,4 +1,4 @@
-package com.chatgpt.studentregistration.errors;
+package com.studentregistration.errors;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;

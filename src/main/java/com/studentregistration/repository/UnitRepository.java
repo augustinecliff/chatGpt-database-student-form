@@ -1,6 +1,7 @@
-package com.chatgpt.studentregistration.repository;
+package com.studentregistration.repository;
 
+import com.studentregistration.model.Unit;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.chatgpt.studentregistration.model.Unit;
+
 public interface UnitRepository extends JpaRepository<Unit, Integer> {
 }

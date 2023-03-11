@@ -1,6 +1,6 @@
-package com.chatgpt.studentregistration.repository;
+package com.studentregistration.repository;
 
-import com.chatgpt.studentregistration.model.Student;
+import com.studentregistration.model.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

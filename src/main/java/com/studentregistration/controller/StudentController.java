@@ -1,12 +1,12 @@
 // StudentController.java
 
-package com.chatgpt.studentregistration.controller;
+package com.studentregistration.controller;
 
-import com.chatgpt.studentregistration.errors.StudentNotFoundException;
-import com.chatgpt.studentregistration.model.Student;
-import com.chatgpt.studentregistration.model.Unit;
-import com.chatgpt.studentregistration.service.StudentService;
-import com.chatgpt.studentregistration.service.UnitService;
+import com.studentregistration.errors.StudentNotFoundException;
+import com.studentregistration.model.Student;
+import com.studentregistration.model.Unit;
+import com.studentregistration.service.StudentService;
+import com.studentregistration.service.UnitService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -73,8 +73,6 @@ public class StudentController {
         Optional<Student> student = studentService.getStudentById(id);
         if (student.isPresent()) {
             model.addAttribute("student", student.get());
-            model.addAttribute("Student-units",student.get().getUnits());
-            System.out.println(student.get().getUnits()); //make sure to remove ..
 
             return "student-details";
         } else {
@@ -86,6 +84,7 @@ public class StudentController {
         Optional<Student> student = studentService.getStudentById(id);
         if (student.isPresent()) {
             model.addAttribute("student", student.get());
+            model.addAttribute("units",unitService.getAllUnits());
 
             return "edit-student";
         } else {

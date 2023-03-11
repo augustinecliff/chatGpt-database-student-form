@@ -146,12 +146,8 @@
             </form>
         </section>-->
         <section class="actions">
-            <a class="btn btn-primary" th:href="@{/students/edit/{id}(id=${student.id})}">
-                <button class="editStudent" type="button">Edit Student</button>
-            </a>
-            <form method="POST" onsubmit="return confirm('Are you sure you want to delete this student?')" th:action="@{/students/delete/{id}(id=${student.id})}">
-                <button class="deleteStudent" type="submit">Delete Student</button>
-            </form>
+            <a th:href="@{/students/edit/{id}(id=${student.id})}">Edit</a><br/>
+            <a th:href="@{/students/delete/{id}(id=${student.id})}">Delete</a>
         </section>
     </main>
     </body>

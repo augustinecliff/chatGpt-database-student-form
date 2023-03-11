@@ -1,8 +1,8 @@
 // StudentService.java
-package com.chatgpt.studentregistration.service;
+package com.studentregistration.service;
 
-import com.chatgpt.studentregistration.model.Student;
-import com.chatgpt.studentregistration.repository.StudentRepository;
+import com.studentregistration.model.Student;
+import com.studentregistration.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

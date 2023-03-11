@@ -1,4 +1,4 @@
-package com.chatgpt.studentregistration.com.chatgpt.database;
+package com.studentregistration.com.chatgpt.database;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,10 +1,9 @@
-package com.chatgpt.studentregistration.service;
+package com.studentregistration.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.chatgpt.studentregistration.model.Unit;
-import com.chatgpt.studentregistration.repository.UnitRepository;
+import com.studentregistration.model.Unit;
+import com.studentregistration.repository.UnitRepository;
 
 import java.util.List;
 

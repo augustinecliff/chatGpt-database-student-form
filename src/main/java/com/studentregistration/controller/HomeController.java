@@ -1,4 +1,4 @@
-package com.chatgpt.studentregistration.controller;
+package com.studentregistration.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

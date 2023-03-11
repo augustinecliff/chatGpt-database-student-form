@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>chatGpt-database-student-form</artifactId>
+    <artifactId>student-registration-form</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>chatGpt-database-student-form</name>
     <description>chatGpt-database-student-form</description>

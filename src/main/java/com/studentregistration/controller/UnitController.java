@@ -1,7 +1,7 @@
-package com.chatgpt.studentregistration.controller;
+package com.studentregistration.controller;
 
-import com.chatgpt.studentregistration.model.Unit;
-import com.chatgpt.studentregistration.repository.UnitRepository;
+import com.studentregistration.model.Unit;
+import com.studentregistration.repository.UnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
